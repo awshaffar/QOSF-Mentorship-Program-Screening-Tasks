@@ -1,53 +1,22 @@
 # QOSF-Mentorship-Program-Screening-Tasks
-## Task 3 ZNE
+## Task 2 Noise, Noise, and More Noise
 
-Zero-noise extrapolation (ZNE) is a noise mitigation technique. It works by intentionally scaling the noise of a quantum circuit to then extrapolate the zero-noise limit of an observable of interest. In this task, you will build a simple ZNE function from scratch:
+One of the main challenges in quantum computing is the noise in current devices. In this task, you will create a simple noise generator and assess its effect. You can use any framework you like (Qiskit, Cirq, etc..)
+### 1. Noise Model
+A standard way to represent the noise in a quantum circuit is through Pauli operators $(\sigma_x, \sigma_y, \sigma_z)$. Build a function with input $\apha$, $\beta$ and `QuantumCircuit` where:
+- $\alpha \to$ Probability of having a random Pauli operator acting on the qubit after a one-qubit gate
+- $\beta \to$ Probability of having a random Pauli operator acting on the qubit after a two-qubit gate
+- `QuantumCircuit` $\to$ where the noise will be added
+The output should be the Quantum Circuit with Noise 
 
-1. Build a simple noise model with depolarizing noise 
-2. Create different circuits to test your noise models and choose the observable to measure 
-3. Apply the unitary folding method. 
-4. Apply the extrapolation method to get the zero-noise limit. Different extrapolation methods achieve different results, such as Linear, polynomial, and exponential.
-5. Compare mitigated and unmitigated results 
-6. Bonus: Run your ZNE function in real quantum hardware through the [IBM Quantum Service](https://www.ibm.com/quantum)
+### 2. Gate Basis
+Quantum computers can implement only a set of gates that, with transformations, can represent any other possible gate. This set of gates is called the Gate Basis of the QPU. Build a function that transforms a general Quantum Circuit to the following gate basis: `{CX,ID,RZ,SX,X}`
 
-Check the [Mitiq documentation](https://mitiq.readthedocs.io/en/stable/guide/zne-5-theory.html) for references. You are not allowed to use the functions from Mitiq or any other frameworks where ZNE is already implemented. 
+### 3. Adding two numbers with a quantum computer
+Build a function (`quantum_sum`) to add two numbers using the Draper adder algorithm. You will need the Quantum Fourier Transform (QFT). Many libraries offer a function to use it. For this task, you will need to build QFT from scratch.
 
-## Usage
-
-### Getting Started
-
-To get started with this repository, follow these steps:
-
-### 1. Clone this Repository
-Clone this repository to your local machine using the following command:
-```bash
-git clone https://github.com/awshaffar/QOSF-Mentorship-Program-Screening-Tasks.git
-```
-
-### 2. Install dependencies:
-
-Before running the code, ensure that you have Python and pip installed on your system. This project supports Python 3.7 and above. You can download and install Python from the [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/) installed on your system before proceeding with the installation. 
-
-Next, navigate to the cloned repository directory:
-
-```bash
-cd QOSF-Mentorship-Program-Screening-Tasks
-```
-
-Install the required dependencies by running:
-
-```bash
-pip install -r requirements.txt
-```
-
-This command will install all necessary Python packages specified in the requirements.txt file, including libraries for quantum computing and data analysis.
-
-If you prefer using a virtual environment, you can create and activate one before installing dependencies:
-
-```bash
-python -m venv venv     # Create a virtual environment
-source venv/bin/activate  # Activate the virtual environment on macOS/Linux
-.\venv\Scripts\activate   # Activate the virtual environment on Windows
-```
-
-Once the virtual environment is activated, you can proceed to install the dependencies using the pip install -r requirements.txt command as mentioned above.
+### 4. Effects of noise on quantum addition
+Now, we can combine all the functions. Transform the circuit used in the quantum_sum to the gate basis and add noise. Use different levels of noise and analyze the results. 
+- How does the noise affect the results?
+- Is there a way to decrease the effect of noise?
+- How does the number of gates used affect the results?
