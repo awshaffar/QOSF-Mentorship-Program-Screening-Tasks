@@ -3,7 +3,7 @@
 
 One of the main challenges in quantum computing is the noise in current devices. In this task, you will create a simple noise generator and assess its effect. You can use any framework you like (Qiskit, Cirq, etc..)
 ### 1. Noise Model
-A standard way to represent the noise in a quantum circuit is through Pauli operators $(\sigma_x, \sigma_y, \sigma_z)$. Build a function with input $\apha$, $\beta$ and `QuantumCircuit` where:
+A standard way to represent the noise in a quantum circuit is through Pauli operators $(\sigma_x, \sigma_y, \sigma_z)$. Build a function with input $\alpha$, $\beta$ and `QuantumCircuit` where:
 - $\alpha \to$ Probability of having a random Pauli operator acting on the qubit after a one-qubit gate
 - $\beta \to$ Probability of having a random Pauli operator acting on the qubit after a two-qubit gate
 - `QuantumCircuit` $\to$ where the noise will be added
